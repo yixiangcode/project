@@ -1,4 +1,4 @@
-# project
+# SUC Mobile Application Project
 
 A new Flutter project.
 
