@@ -105,6 +105,7 @@ class MainScreenState extends State<MainScreen> {
                   crossAxisSpacing: 4.0,
                   mainAxisSpacing: 4.0,
                 ),
+                itemCount: MineSweeperGame.cells,
                 itemBuilder: (BuildContext ctx, index) {
                   Color cellColor = game.gameMap[index].reveal
                       ? AppColor.clickedCard
