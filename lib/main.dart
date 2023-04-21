@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'about.dart';
 import 'game.dart';
+import 'game2.dart';
 
 void main() {
   runApp(const UI());
@@ -47,15 +48,15 @@ class _HomeState extends State<Home> {
                   fontSize: 120.0,
                   color: Colors.yellowAccent,
                 ),
-                'Maze Game'),
+                'Mini Game'),
             SizedBox(
               height: 10.0,
             ),
             Hero(
-              tag: "play",
+              tag: "game1",
               child: SizedBox(
-                width: 300.0,
-                height: 80.0,
+                width: 350.0,
+                height: 60.0,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepOrange,
@@ -64,9 +65,9 @@ class _HomeState extends State<Home> {
                       style: TextStyle(
                         color: Colors.cyanAccent,
                         fontFamily: 'Dongle',
-                        fontSize: 60.0,
+                        fontSize: 50.0,
                       ),
-                      'Play'),
+                      'The Maze'),
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MazePage()));
@@ -78,10 +79,10 @@ class _HomeState extends State<Home> {
               height: 50.0,
             ),
             Hero(
-              tag: "about",
+              tag: "game2",
               child: SizedBox(
-                width: 300.0,
-                height: 80.0,
+                width: 350.0,
+                height: 60.0,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepOrange,
@@ -90,7 +91,33 @@ class _HomeState extends State<Home> {
                       style: TextStyle(
                         color: Colors.cyanAccent,
                         fontFamily: 'Dongle',
-                        fontSize: 60.0,
+                        fontSize: 50.0,
+                      ),
+                      'Rock Paper Scissor'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Game2()));
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 50.0,
+            ),
+            Hero(
+              tag: "about",
+              child: SizedBox(
+                width: 350.0,
+                height: 60.0,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepOrange,
+                      shape: StadiumBorder()),
+                  child: Text(
+                      style: TextStyle(
+                        color: Colors.cyanAccent,
+                        fontFamily: 'Dongle',
+                        fontSize: 50.0,
                       ),
                       'About'),
                   onPressed: () {
@@ -104,8 +131,8 @@ class _HomeState extends State<Home> {
               height: 50.0,
             ),
             SizedBox(
-              width: 300.0,
-              height: 80.0,
+              width: 350.0,
+              height: 60.0,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepOrange, shape: StadiumBorder()),
@@ -113,7 +140,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       color: Colors.cyanAccent,
                       fontFamily: 'Dongle',
-                      fontSize: 60.0,
+                      fontSize: 50.0,
                     ),
                     'Exit'),
                 onPressed: () {

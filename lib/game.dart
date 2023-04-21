@@ -68,7 +68,7 @@ class _MazePageState extends State<MazePage> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => UI()));
           },
-          icon: Hero(tag: "play", child: Icon(Icons.arrow_back)),
+          icon: Hero(tag: "game1", child: Icon(Icons.arrow_back)),
         ),
         backgroundColor: Colors.purple,
       ),
