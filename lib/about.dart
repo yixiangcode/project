@@ -30,9 +30,12 @@ class About extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                backgroundImage: AssetImage('images/avatar.jpg'),
-                radius: 70.0,
+              Hero(
+                tag: "about",
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('images/avatar.jpg'),
+                  radius: 70.0,
+                ),
               ),
               SizedBox(
                 height: 10.0,
