@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'about.dart';
 import 'game.dart';
 import 'game2.dart';
+import 'game3.dart';
 
 void main() {
   runApp(const UI());
@@ -31,6 +32,50 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   @override
+  Future openDialog() => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Center(
+              child: Text(
+                  style: TextStyle(
+                    color: Colors.redAccent,
+                    fontFamily: 'Dongle',
+                    fontSize: 60.0,
+                  ),
+                  'Exit?')),
+          actions: [
+            TextButton(
+              child: Text(
+                  style: TextStyle(
+                    color: Colors.brown,
+                    fontFamily: 'Dongle',
+                    fontSize: 30.0,
+                  ),
+                  'No'),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => UI()));
+              },
+            ),
+            TextButton(
+              child: Text(
+                  style: TextStyle(
+                    color: Colors.brown,
+                    fontFamily: 'Dongle',
+                    fontSize: 30.0,
+                  ),
+                  'Yes'),
+              onPressed: () {
+                if (Platform.isAndroid) {
+                  SystemNavigator.pop();
+                } else {
+                  exit(0);
+                }
+              },
+            ),
+          ],
+        ),
+      );
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -76,7 +121,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 50.0,
+              height: 25.0,
             ),
             Hero(
               tag: "game2",
@@ -102,7 +147,30 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 50.0,
+              height: 25.0,
+            ),
+            SizedBox(
+              width: 350.0,
+              height: 60.0,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepOrange,
+                    shape: StadiumBorder()),
+                child: Text(
+                    style: TextStyle(
+                      color: Colors.cyanAccent,
+                      fontFamily: 'Dongle',
+                      fontSize: 50.0,
+                    ),
+                    'Minesweeper'),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MainScreen()));
+                },
+              ),
+            ),
+            SizedBox(
+              height: 25.0,
             ),
             Hero(
               tag: "about",
@@ -128,7 +196,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 50.0,
+              height: 25.0,
             ),
             SizedBox(
               width: 350.0,
@@ -143,13 +211,7 @@ class _HomeState extends State<Home> {
                       fontSize: 50.0,
                     ),
                     'Exit'),
-                onPressed: () {
-                  if (Platform.isAndroid) {
-                    SystemNavigator.pop();
-                  } else {
-                    exit(0);
-                  }
-                },
+                onPressed: () => openDialog(),
               ),
             )
           ],

@@ -14,14 +14,15 @@ class _Game2State extends State<Game2> {
   int rock = 1;
   int paper = 2;
   int scissor = 3;
-  String image = "avatar";
+  String aiImage = "avatar";
+  String userImage = "rps.png";
   int ?ai;
   String status="Tap to Start";
   int ?userInput;
   void randomize() {
     ai = Random().nextInt(3) + 1;
     if(ai == scissor){
-      image = "scissor";
+      aiImage = "scissor";
       if(userInput == rock){
         status = "You Win";
       }else if(userInput == paper){
@@ -30,7 +31,7 @@ class _Game2State extends State<Game2> {
         status = "Draw";
       }
     }else if(ai == rock){
-      image = "rock";
+      aiImage = "rock";
       if(userInput == scissor){
         status = "You Lose";
       }else if(userInput == paper){
@@ -39,7 +40,7 @@ class _Game2State extends State<Game2> {
         status = "Draw";
       }
     }else if(ai == paper){
-      image = "paper";
+      aiImage = "paper";
       if(userInput == scissor){
         status = "You Win";
       }else if(userInput == rock){
@@ -47,6 +48,16 @@ class _Game2State extends State<Game2> {
       }else{
         status = "Draw";
       }
+    }
+  }
+
+  void userStatus(){
+    if(userInput == scissor){
+      userImage = "scissor.jpg";
+    }else if(userInput == rock){
+      userImage = "rock.jpg";
+    }else if(userInput == paper){
+      userImage = "paper.jpg";
     }
   }
 
@@ -76,19 +87,44 @@ class _Game2State extends State<Game2> {
           Text(
               style: TextStyle(
                 fontFamily: 'Dongle',
-                fontSize: 120.0,
+                fontSize: 100.0,
                 color: Colors.yellowAccent,
               ),status),
+          Text(
+              style: TextStyle(
+                fontFamily: 'Dongle',
+                fontSize: 40.0,
+                color: Colors.yellowAccent,
+              ),"AI : "),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              // Left Dice
+              padding: const EdgeInsets.all(5.0),
               child: TextButton(
                 onPressed: () {
                   setState(() {});
                 },
                 child: Image.asset(
-                  'images/$image.jpg',
+                  'images/$aiImage.jpg',
+                ),
+              ),
+            ),
+          ),
+          Text(
+              style: TextStyle(
+                fontFamily: 'Dongle',
+                fontSize: 40.0,
+                color: Colors.yellowAccent,
+              ),"You : "),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                  });
+                },
+                child: Image.asset(
+                  'images/$userImage',
                 ),
               ),
             ),
@@ -98,12 +134,12 @@ class _Game2State extends State<Game2> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  // Left Dice
                   child: TextButton(
                     onPressed: () {
                       setState(() {
                         userInput = rock;
                         randomize();
+                        userStatus();
                       });
                     },
                     child: Image.asset(
@@ -115,12 +151,12 @@ class _Game2State extends State<Game2> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  // Left Dice
                   child: TextButton(
                     onPressed: () {
                       setState(() {
                         userInput = paper;
                         randomize();
+                        userStatus();
                       });
                     },
                     child: Image.asset(
@@ -132,12 +168,12 @@ class _Game2State extends State<Game2> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  // Left Dice
                   child: TextButton(
                     onPressed: () {
                       setState(() {
                         userInput = scissor;
                         randomize();
+                        userStatus();
                       });
                     },
                     child: Image.asset(
